@@ -1,5 +1,5 @@
 from Sensob import *
-from camera import *
+from baisic_robot/camera import *
 
 class CameraSensob(Sensob):
 
