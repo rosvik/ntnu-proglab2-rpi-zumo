@@ -1,11 +1,11 @@
-from time import sleep
-import random
-import imager2 as IMR
-from reflectance_sensors import ReflectanceSensors
-from camera import Camera
-from motors import Motors
-from ultrasonic import Ultrasonic
-from zumo_button import ZumoButton
+#from time import sleep
+#import random
+#import imager2 as IMR
+#from reflectance_sensors import ReflectanceSensors
+#from camera import Camera
+#from motors import Motors
+#from ultrasonic import Ultrasonic
+#from zumo_button import ZumoButton
 
 class Behavior():
     def __init__(self, bbcon):

@@ -7,7 +7,7 @@ class CameraSensob(Sensob):
 
     def __init__(self):
         super(CameraSensob, self).__init__()
-        self.sonsor = Camera()
+        self.sensor = Camera()
         self.sensors.append(self.sensor)
         self.value = None
 
