@@ -49,8 +49,12 @@ class CameraSensob(Sensob):
         self.sensors.append(self.sensor)
         self.value = None
 
-    def update(self):
+    """update - This instructs the Raspicam to take a picture and store it in a file (image.png) on the
+        Raspberry Pi. It then calls Image.open(image.png), which creates a PIL Image object and loads it
+        with data from the file image.png. Finally, it sets the value slot of the Camera object to that Image
+        object, which serves as the return value."""
 
+    def update(self):
         #updates the values
 
         print("updating camera sensor ....")
@@ -58,12 +62,17 @@ class CameraSensob(Sensob):
         self.value = self.sensors[0].get_value()
         return self.value
 
+    """get value - returns the Image object, which is ready to be analyzed and modified using the wide range of PIL methods."""
     def get_value(self):
 
         #return value to the value
 
         return self.value
         self.sensors[0].update()
+
+    """reset - set the value slot to None."""
+    def reset(self):
+        self.sensors[0].reset
 
 
 class UV(Sensob):
