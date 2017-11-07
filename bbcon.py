@@ -10,7 +10,7 @@ from ultrasonic import Ultrasonic
 from zumo_button import ZumoButton
 from time import sleep
 
-class BBCON():
+class BBCON:
     def __init__(self):
         self.behaviors = []
         self.active_behaviors = []
@@ -19,10 +19,15 @@ class BBCON():
         self.motobs = []
         self.current_timestep = 0
         self.arbitrator = Arbitrator()
-
-        self.add_sensob(UV())
-        self.add_sensob(Proximity())
-        self.add_sensob(CameraSensob())
+        # Adds all behaviors to the BBCON
+        self.add_behavior(UV_behavior(self))
+        self.add_behavior(camera_behavior(self))
+        self.add_behavior(proximity_behavior(self))
+        # Adds all the sensobs used by the behaviors to the BBCON
+        for behavior in self.behaviors:
+            for sensob in self.behavior.sensobs:
+                if sensob not in self.sensobs:
+                    self.add_sensob(sensob)
 
     def add_behavior(behavior):
         self.behaviors.append(behavior)
