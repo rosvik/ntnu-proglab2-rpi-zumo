@@ -20,6 +20,10 @@ class BBCON():
         self.current_timestep = 0
         self.arbitrator = Arbitrator()
 
+        self.add_sensob(UV())
+        self.add_sensob(Proximity())
+        self.add_sensob(CameraSensob())
+
     def add_behavior(behavior):
         self.behaviors.append(behavior)
 
