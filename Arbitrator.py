@@ -11,36 +11,36 @@ class Arbitrator():
     #Velger om ein skal velge med hensyn til vekt eller stokastisk
     def choose_action(self):
         if self.stoch:
-            return self.stochastic_choice()
+            return self.stochastic()
         else:
-            return self.deterministic_choice()
+            return self.deterministic()
 
-    #Velger ein tilfeldig behaviour
-    def stochastic_choice(self):
+
+    #Velger den med størst prioritet
+    def deterministic(self):
+        maximum = self.bbcon.active_behaviors[0].priority
+        winner = self.bbcon.active_behaviors[0]
+        for behave in self.bbcon.active_behaviors:
+            if behave.priority > maximum:
+                maximum = behave.priority
+                winner = behave
+        return winner
+
+    # Velger ein tilfeldig behaviour
+    def stochastic(self):
         sum = 0
         behaviour_dict = {}
 
-        #Går gjennom alle behaviours og lager ei dictionary med intervall
+        #B1: [0, 0.8), B2: [0.8, 1.3) osv
         for behave in self.bbcon.active_behaviors:
-            behaviour_dict[behave] = [sum, sum+behave.priority]
+            behaviour_dict[behave] = [sum, sum + behave.priority]
             sum += behave.priority
 
-        #Plukker eit random tall innafor intervallet
         rand = random.uniform(0, sum)
         winner = None
 
-        #Finn riktig vinner
+        # Finn riktig vinner
         for key, value in behaviour_dict.items():
             if value[1] < rand:
                 winner = key
-        return winner
-
-    #Velger den med størst prioritet
-    def deterministic_choice(self):
-        max = self.bbcon.active_behaviors[0].priority
-        winner = self.bbcon.active_behaviors[0]
-        for behave in self.bbcon.active_behaviors:
-            if behave.priority > max:
-                max = behave.priority
-                winner = behave
         return winner
