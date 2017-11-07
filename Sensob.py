@@ -1,5 +1,7 @@
 from basic_robot/irproximity_sensor import IRProximitySensor
 import basic_robot/ultrasonic
+from math import floor
+from basic_robot/camera import Camera
 
 class Sensob:
 
@@ -39,32 +41,52 @@ class Proximity(Sensob):
         self.sensors[0].update()
 
 
+
 class CameraSensob(Sensob):
 
-    #kamera
+    #kamera, skal detektere farge og analysere
 
-    def __init__(self):
-        super(CameraSensob, self).__init__()
-        self.sonsor = Camera()
-        self.sensors.append(self.sensor)
-        self.value = None
+    def __init__(self, color, threshold = 0.3, CR=(0.5, 0.25, 0, 0.25)):
+        super().__init__()
+        self.color = color          #rgb tuppel av fargen du skal se for
+        self.threshold = threshold  #slingrishmonn tillatt
+        self.CR = CR                #cutratio, hvor mye av bilde som skal kuttes før analyseringa
+        self.sensor = Camera()
 
-    """update - This instructs the Raspicam to take a picture and store it in a file (image.png) on the
-        Raspberry Pi. It then calls Image.open(image.png), which creates a PIL Image object and loads it
-        with data from the file image.png. Finally, it sets the value slot of the Camera object to that Image
-        object, which serves as the return value."""
-
+    #tar bilde med kamera + analse av fargeverdiene
     def update(self):
-        #updates the values
+        image = self.camera.update()
+        width, height = image.size
+
+        s0_y = floor(height * self.CR[0])
+        s1_y = floor(height * (1-self.CR[2]))
+        s0_x = floor(width * self.CR[3])
+        s1_x = floor(width * (1-self.CR[1]))
+
+        lower = [self.color[i] - 255*self.threshold for i in range(3)]
+        upper = [self.color[i] + 255*self.threshold for i in range(3)]
+
+        #går igjennom hver piksel på bildet og ser om pikselet er nærme nok fargen vi ser etter. if yies, counter
+        num_color_pixels = 0
+        num_pixels = (s1_x - s0_x) * (s0_y - s1_y)
+
+        for x in range(s0_x, s1_x):
+            for y in range(s0_y, s1_y):
+                pixel = image.getpixel((x,y))
+                for i in range(3):
+                    if not lower[i] <= pixel[i] <= upper[i]:
+                        break
+                    else:
+                        num_color_pixels += 1
+        self.value = num_color_pixels/num_pixels    #forhold mellom piksler av fargen og totalt antall
+
 
         print("updating camera sensor ....")
-        self.sensors[0].update()
-        self.value = self.sensors[0].get_value()
+
         return self.value
 
     """get value - returns the Image object, which is ready to be analyzed and modified using the wide range of PIL methods."""
     def get_value(self):
-
         #return value to the value
 
         return self.value
