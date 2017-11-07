@@ -45,7 +45,6 @@ class Proximity(Sensob):
 class CameraSensob(Sensob):
 
     #kamera, skal detektere farge og analysere
-
     def __init__(self, color, threshold = 0.3, CR=(0.5, 0.25, 0, 0.25)):
         super().__init__()
         self.color = color          #rgb tuppel av fargen du skal se for

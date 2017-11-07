@@ -46,8 +46,10 @@ class UV_behavior(Behavior):
         self.sensobs.append(UV())
 
 class camera_behavior(Behavior):
+    #skrive oppførselen vi vil den skal gjøre her.
     def __init__(self, bbcon):
         self.sensobs.append(CameraSensob())
+
 
 class proximity_behavior(Behavior):
     def __init__(self, bbcon):
