@@ -7,7 +7,7 @@
 #from ultrasonic import Ultrasonic
 #from zumo_button import ZumoButton
 
-class Behavior():
+class Behavior:
     def __init__(self, bbcon):
         self.bbcon = bbcon
         self.sensobs = []
@@ -40,3 +40,16 @@ class Behavior():
             self.consider_activation()
         self.sense_and_act() # Updates the match_degree
         self.weight_update() # Updates the weight
+
+class UV_behavior(Behavior):
+    def __init__(self, bbcon):
+        self.sensobs.append(UV())
+
+class camera_behavior(Behavior):
+    def __init__(self, bbcon):
+        self.sensobs.append(CameraSensob())
+
+class proximity_behavior(Behavior):
+    def __init__(self, bbcon):
+        self.sensobs.append(Proximity())
+
