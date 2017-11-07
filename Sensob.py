@@ -1,3 +1,4 @@
+from basic_robot/irproximity_sensor import IRProximitySensor
 
 class Sensob:
 
@@ -18,3 +19,21 @@ class Sensob:
 
         for sensor in self.sensors:
             sensor.reset()
+
+class Proximity(Sensob):
+
+    def __init__(self):
+        self.sensor = IRProximitySensor()
+
+    def get_value(self):
+        self.update() # TODO: Is this needed?
+
+        # True means something is close
+        # Boolean array, with one value for each sensor
+        self.value = self.sensor.value
+
+    def reset(self):
+        self.sensor.reset()
+
+    def update(self):
+        self.sensor.update()
