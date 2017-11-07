@@ -23,11 +23,9 @@ class Sensob:
 class Proximity(Sensob):
 
     def __init__(self):
-        self.sensor = IRProximitySensor()
+        self.sensors = [IRProximitySensor()]
 
     def get_value(self):
-        self.update() # TODO: Is this needed?
-
         # True means something is close
         # Boolean array, with one value for each sensor
         self.value = self.sensor.value
