@@ -1,7 +1,8 @@
-from basic_robot/irproximity_sensor import IRProximitySensor
-import basic_robot/ultrasonic
+from basic_robot.irproximity_sensor import IRProximitySensor
+import basic_robot.ultrasonic
 from math import floor
-from basic_robot/camera import Camera
+from basic_robot.camera import Camera
+
 
 class Sensob:
 
