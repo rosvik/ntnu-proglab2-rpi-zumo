@@ -18,11 +18,11 @@ class Arbitrator():
 
     #Velger den med størst prioritet
     def deterministic(self):
-        maximum = self.bbcon.active_behaviors[0].priority
+        maximum = self.bbcon.active_behaviors[0].weight
         winner = self.bbcon.active_behaviors[0]
         for behave in self.bbcon.active_behaviors:
-            if behave.priority > maximum:
-                maximum = behave.priority
+            if behave.weight > maximum:
+                maximum = behave.weight
                 winner = behave
         return winner.motor_rec, winner.halt_request
 
@@ -33,8 +33,8 @@ class Arbitrator():
 
         #B1: [0, 0.8), B2: [0.8, 1.3) osv
         for behave in self.bbcon.active_behaviors:
-            behaviour_dict[behave] = [sum, sum + behave.priority]
-            sum += behave.priority
+            behaviour_dict[behave] = [sum, sum + behave.weight]
+            sum += behave.weight
 
         rand = random.uniform(0, sum)
         winner = None
