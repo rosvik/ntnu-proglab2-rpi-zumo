@@ -18,7 +18,7 @@ class BBCON:
         self.sensobs = []
         self.motobs = []
         self.current_timestep = 0
-        self.arbitrator = Arbitrator()
+        self.arbitrator = Arbitrator(self, False)
         # Adds all behaviors to the BBCON
         self.add_behavior(UV_behavior(self))
         self.add_behavior(camera_behavior(self))
