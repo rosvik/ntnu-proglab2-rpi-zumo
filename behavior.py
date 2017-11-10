@@ -49,15 +49,11 @@ class UV_behavior(Behavior):
     def sense_and_act(self):
         dist = sensob[0].get_value()
         if dist >= 10:
-            self.motor_rec.append('F')
-            self.motor_rec.append(0.25)
-            self.motor_rec.append(0.3)
+            self.motor_rec = ['F', 0.25, 0.3]
             self.match_degree = 0.5
             self.weight_update()
         else:
-            self.motor_rec.append('S')
-            self.motor_rec.append(0)
-            self.notor_rec.append(0)
+            self.motor_rec.append['S', 0, 0]
             self.match_degree = 0.7
             self.weight_update()
 

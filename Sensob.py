@@ -3,6 +3,7 @@ import basic_robot/ultrasonic
 from math import floor
 from basic_robot/camera import Camera
 
+
 class Sensob:
 
     #serves as an interface between one or more sensors and bbcon behav
