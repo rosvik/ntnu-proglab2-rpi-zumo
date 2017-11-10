@@ -59,8 +59,7 @@ class UV_behavior(Behavior):
 
 class camera_behavior(Behavior):
     #skrive oppførselen vi vil den skal gjøre her.
-    sensob_type = ["red"]
-
+    
     def __init__(self, bbcon):
         self.sensobs.append(CameraSensob())
 
