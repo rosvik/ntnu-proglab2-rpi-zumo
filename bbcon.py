@@ -1,6 +1,6 @@
 import random
 import Sensob
-import Arbitrator
+from Arbitrator import *
 import behavior
 import Wheels
 import basic_robot.imager2 as IMR

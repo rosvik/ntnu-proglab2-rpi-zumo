@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca7c0f88-09b3-4bda-ac83-785313de1e8c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Sensob.py" afterPath="$PROJECT_DIR$/Sensob.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bbcon.py" afterPath="$PROJECT_DIR$/bbcon.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/behavior.py" afterPath="$PROJECT_DIR$/behavior.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bbcon.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bbcon.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bbcon.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+            <state relative-caret-position="50">
+              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -144,7 +141,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="robodemo.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="robodemo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/basic_robot/robodemo.py">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< Updated upstream
@@ -180,11 +177,14 @@
         <option value="$PROJECT_DIR$/Arbitrator.py" />
         <option value="$PROJECT_DIR$/Wheels.py" />
         <option value="$PROJECT_DIR$/behavior.py" />
-        <option value="$PROJECT_DIR$/bbcon.py" />
         <option value="$PROJECT_DIR$/Sensob.py" />
+<<<<<<< Updated upstream
 =======
         <option value="$PROJECT_DIR$/Sensob.py" />
         <option value="$PROJECT_DIR$/behavior.py" />
+>>>>>>> Stashed changes
+=======
+        <option value="$PROJECT_DIR$/bbcon.py" />
 >>>>>>> Stashed changes
       </list>
     </option>
@@ -612,6 +612,7 @@
       </provider>
     </entry>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/behavior.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -642,6 +643,8 @@
       </provider>
     </entry>
 <<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
     <entry file="file://$PROJECT_DIR$/Wheels.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -728,6 +731,22 @@
             <marker date="1510321761445" expanded="true" signature="1101:1280" ph="..." />
           </folding>
 >>>>>>> Stashed changes
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/behavior.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bbcon.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
