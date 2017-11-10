@@ -47,8 +47,21 @@ class UV_behavior(Behavior):
 
 class camera_behavior(Behavior):
     #skrive oppførselen vi vil den skal gjøre her.
+    sensob_type = ["red"]
+
     def __init__(self, bbcon):
         self.sensobs.append(CameraSensob())
+
+
+    def sense_and_act(self):
+        red = self.sensob[ColorSensob((150, 50, 50), 0.2)].value    #rød = ColorSensob((150, 50, 50), 0.2)
+        if red > 0.5:
+            self.motor_recommendations = [("f", 0.5, 0, 1)]
+            self.match_degree = red             # priority*match degree. (prioriteten
+        else:
+            self.motor_recommendations = []
+            self.match_degree = 0
+
 
 
 class proximity_behavior(Behavior):
