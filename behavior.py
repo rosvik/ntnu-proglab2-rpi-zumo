@@ -3,9 +3,9 @@ import random
 import basic_robot.imager2 as IMR
 from basic_robot.reflectance_sensors import ReflectanceSensors
 from basic_robot.camera import Camera
-from motors import Motors
-from ultrasonic import Ultrasonic
-from zumo_button import ZumoButton
+from basic_robot.motors import Motors
+from basic_robot.ultrasonic import Ultrasonic
+from basic_robot.zumo_button import ZumoButton
 
 class Behavior:
     def __init__(self, bbcon):
