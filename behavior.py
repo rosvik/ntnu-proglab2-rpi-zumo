@@ -38,7 +38,7 @@ class Behavior:
             self.consider_deactivation()
         else:
             self.consider_activation()
-        self.sense_and_act() # Updates the match_degree
+        self.sense_and_act() # Updates the match_degree and motor_rec
         self.weight_update() # Updates the weight
 
 class UV_behavior(Behavior):
@@ -54,4 +54,16 @@ class camera_behavior(Behavior):
 class proximity_behavior(Behavior):
     def __init__(self, bbcon):
         self.sensobs.append(Proximity())
+        self.active_flag = True
 
+    def sense_and_act(self):
+        val = self.sensobs[0].get_value()
+        if val[0] == True:
+            self.motor_rec = ['R', 0.25, 1]
+            self.match_degree = 1
+        else if val[1] == True:
+            self.motor_rec = ['L', 0.25, 1]
+            self.match_degree = 1
+        else:
+            self.motor_rec = ['S', 0.25, 1]
+            self.match_degree = 0
