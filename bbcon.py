@@ -1,14 +1,14 @@
 import random
 import Sensob
 from Arbitrator import *
-import behavior
+from behavior import *
 import Wheels
 import basic_robot.imager2 as IMR
 from basic_robot.reflectance_sensors import ReflectanceSensors
-from camera import Camera
-from motors import Motors
-from ultrasonic import Ultrasonic
-from zumo_button import ZumoButton
+from basic_robot.camera import Camera
+from basic_robot.motors import Motors
+from basic_robot.ultrasonic import Ultrasonic
+from basic_robot.zumo_button import ZumoButton
 from time import sleep
 
 class BBCON:
@@ -35,21 +35,21 @@ class BBCON:
         # Adds motob
         self.motobs = [Wheels()]
 
-    def add_behavior(behavior):
+    def add_behavior(self, behavior):
         self.behaviors.append(behavior)
 
-    def add_sensob(sensob):
+    def add_sensob(self, sensob):
         self.sensobs.append(sensob)
 
-    def activate_behavior(behavior):
+    def activate_behavior(self, behavior):
         if behavior not in self.active_behaviors:
             self.active_behaviors.append(behavior)
 
-    def deactivate_behavior(behavior):
+    def deactivate_behavior(self, behavior):
         if behavior in self.active_behaviors:
             self.active_behaviors.pop(behavior)
 
-    def run_one_timestep():
+    def run_one_timestep(self):
         for i in range(len(self.sensobs)):
             self.sensobs[i].update()
         for j in range(len(self.behaviors)):
@@ -59,11 +59,11 @@ class BBCON:
         for sensob in self.sensobs:
             sensob.reset()
 
-if __name__ == '__main__':
-    main()
-
 def main():
     bbcon = BBCON()
     x = False
     while x == False:
         bbcon.run_one_timestep()
+
+if __name__ == '__main__':
+    main()

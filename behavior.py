@@ -1,6 +1,7 @@
 from time import sleep
 import random
 import basic_robot.imager2 as IMR
+from Sensob import *
 from basic_robot.reflectance_sensors import ReflectanceSensors
 from basic_robot.camera import Camera
 from basic_robot.motors import Motors
@@ -9,6 +10,9 @@ from basic_robot.zumo_button import ZumoButton
 
 class Behavior:
     def __init__(self, bbcon):
+        self.initfunc(bbcon)
+
+    def initfunc(self, bbcon):
         self.bbcon = bbcon
         self.sensobs = []
         self.motor_rec = []
@@ -43,6 +47,7 @@ class Behavior:
 
 class UV_behavior(Behavior):
     def __init__(self, bbcon):
+        self.initfunc(bbcon)
         self.sensobs.append(UV())
         self.active_flag = True
 
