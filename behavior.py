@@ -2,7 +2,7 @@ from time import sleep
 import random
 import basic_robot.imager2 as IMR
 from basic_robot.reflectance_sensors import ReflectanceSensors
-from camera import Camera
+from basic_robot.camera import Camera
 from motors import Motors
 from ultrasonic import Ultrasonic
 from zumo_button import ZumoButton
