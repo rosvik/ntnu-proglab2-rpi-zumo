@@ -1,11 +1,11 @@
-#from time import sleep
-#import random
-#import imager2 as IMR
-#from reflectance_sensors import ReflectanceSensors
-#from camera import Camera
-#from motors import Motors
-#from ultrasonic import Ultrasonic
-#from zumo_button import ZumoButton
+from time import sleep
+import random
+import basic_robot.imager2 as IMR
+from basic_robot.reflectance_sensors import ReflectanceSensors
+from camera import Camera
+from motors import Motors
+from ultrasonic import Ultrasonic
+from zumo_button import ZumoButton
 
 class Behavior:
     def __init__(self, bbcon):
@@ -73,7 +73,7 @@ class proximity_behavior(Behavior):
         if val[0] == True:
             self.motor_rec = ['R', 0.25, 1]
             self.match_degree = 1
-        else if val[1] == True:
+        elif val[1] == True:
             self.motor_rec = ['L', 0.25, 1]
             self.match_degree = 1
         else:
