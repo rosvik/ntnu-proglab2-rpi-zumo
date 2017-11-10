@@ -24,7 +24,7 @@ class Arbitrator():
             if behave.priority > maximum:
                 maximum = behave.priority
                 winner = behave
-        return winner
+        return winner.motor_rec, winner.halt_request
 
     # Velger ein tilfeldig behaviour
     def stochastic(self):
