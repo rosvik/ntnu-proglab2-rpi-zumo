@@ -72,6 +72,13 @@ class Imager():
         image = image if image else self.image
         return Imager(image=Image.eval(image,func)) # Eval creates a new image, so no need for me to do a copy.
 
+
+
+
+
+
+
+
     # This applies the function to each RGB TUPLE, returning a new tuple to appear in the new image.  So func
     # must return a 3-tuple if the image has RGB pixels.
 
@@ -79,20 +86,32 @@ class Imager():
         im2 = image.copy() if image else self.image.copy()
         for i in range(self.xmax):
             for j in range(self.ymax):
+                print(self.xmax)
+                print(self.ymax)
+                print([i,j])
                 im2.putpixel((i,j),func(im2.getpixel((i,j))))
         return Imager(image = im2)
 
     # WTA = winner take all: The dominant color becomes the ONLY color in each pixel.  However, the winner must
     # dominate by having at least thresh fraction of the total.
-    def map_color_wta(self,image=False,thresh=0.34):
+    def map_color_wta(self, image):
         image = image if image else self.image
         def wta(p):
-            s = sum(p); w = max(p)
-            if s > 0 and w/s >= thresh:
-                return tuple([(x if x == w else 0) for x in p])
-            else:
-                return (0,0,0)
+            w = max(p)
+            l = list(p)
+            i = l.index(w)
+            g = [0,0,0]
+            g[i] = 255
+            return tuple(g)
         return self.map_image2(wta,image)
+
+
+
+
+
+
+
+
 
 
     # Note that grayscale uses the RGB triple to define shades of gray.

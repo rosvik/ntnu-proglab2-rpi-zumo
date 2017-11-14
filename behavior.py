@@ -52,7 +52,8 @@ class UV_behavior(Behavior):
         self.active_flag = True
 
     def sense_and_act(self):
-        dist = self.sensobs[0].get_value()
+        self.sensobs[0].get_value()
+        dist = self.sensobs[0].value
         if dist >= 10:
             self.motor_rec = ['F', 0.25, 0.3]
             self.match_degree = 0.5
@@ -67,7 +68,7 @@ class camera_behavior(Behavior):
     
     def __init__(self, bbcon):
         self.initfunc(bbcon)
-        self.sensobs.append(CameraSensob(color=(255,0,0)))
+        self.sensobs.append(CameraSensob())
 
 
     def sense_and_act(self):
