@@ -37,14 +37,14 @@ class Proximity(Sensob):
     def get_value(self):
         # True means something is close
         # Boolean array, with one value for each sensor
-        self.value = self.sensors[0].value
+        return self.value
 
     def reset(self):
         self.sensors[0].reset()
 
     def update(self):
         self.sensors[0].update()
-        self.get_value()
+        self.value = self.sensors[0].get_value()
 
 
 
@@ -55,12 +55,13 @@ class CameraSensob(Sensob):
         super().__init__()
         self.threshold = threshold  #slingrishmonn tillatt
         self.CR = CR                #cutratio, hvor mye av bilde som skal kuttes før analyseringa
-        self.sensor = Camera()
+        self.sensors = [Camera()]
+        self.value = []
 
 
     #tar bilde med kamera + analse av fargeverdiene
     def update(self):
-        image = self.sensor.update()
+        image = self.sensors[0].update()
 
         width, height = image.size
 
@@ -88,11 +89,13 @@ class CameraSensob(Sensob):
                 pixel = list(image.getpixel((x,y)))
                 num_pixels[pixel.index(255)] += 1
 
-
-
+        color_fraction = [0.0, 0.0, 0.0]
+        pixel_amount = width*height
+        for c in range(len(num_pixels)):
+            color_fraction[c] = num_pixels[c] / pixel_amount
 
         # self.value = num_color_pixels/num_pixels    #forhold mellom piksler av fargen og totalt antall
-        print(num_pixels)
+        self.value = color_fraction
 
     """get value - returns the Image object, which is ready to be analyzed and modified using the wide range of PIL methods."""
     def get_value(self):
@@ -130,9 +133,9 @@ def main():
         p.update()
         u.update()
         c.update()
-        print("prosent:",c.value)
-        #print(p.value)
-        #print(u.sensors[0].value)
+        print("Camera: ", c.get_value())
+        print("Proximity: ", p.get_value())
+        print("UV: ", u.get_value())
         sleep(0.5)
 
 if __name__ == '__main__':

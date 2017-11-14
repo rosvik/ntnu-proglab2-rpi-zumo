@@ -1,9 +1,9 @@
-
+from basic_robot.motors import *
 
 class Motob:
 
     def __init__(self):
-        self.motors = []
+        self.motors = [Motors()]
         self.value = None
 
     #receive a new motor recommendation, load it into the value slot, and operationalize it

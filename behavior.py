@@ -50,6 +50,7 @@ class UV_behavior(Behavior):
         self.initfunc(bbcon)
         self.sensobs.append(UV())
         self.active_flag = True
+        self.bbcon.active_behaviors.append(self)
 
     def sense_and_act(self):
         self.sensobs[0].get_value()
@@ -59,7 +60,7 @@ class UV_behavior(Behavior):
             self.match_degree = 0.5
             self.weight_update()
         else:
-            self.motor_rec.append['S', 0, 0]
+            self.motor_rec = ['S', 0, 0]
             self.match_degree = 0.7
             self.weight_update()
 
@@ -72,14 +73,25 @@ class camera_behavior(Behavior):
 
 
     def sense_and_act(self):
-        red = self.sensob[ColorSensob((150, 50, 50), 0.2)].value    #rød = ColorSensob((150, 50, 50), 0.2)
-        if red > 0.5:
-            self.motor_recommendations = [("f", 0.5, 0, 1)]
-            self.match_degree = red             # priority*match degree. (prioriteten
+        fraction = self.sensobs[0].get_value()
+        index = fraction.index(max(fraction))
+        if max(fraction) > 0.8:
+            if index == 0:
+                self.motor_rec = ['L', 0.2, 1.0]
+                self.match_degree = 1.0
+                self.weight_update()
+            elif index == 1:
+                self.motor_rec = ['R', 0.2, 1.0]
+                self.match_degree = 1.0
+                self.weight_update()
+            else:
+                self.motor_rec = ['L', 0.5, 1.0]
+                self.match_degree = 1.0
+                self.weight_update()
         else:
-            self.motor_recommendations = []
-            self.match_degree = 0
-
+            self.motor_rec = ['B', 0.2, 0.5]
+            self.match_degree = 0.1
+            self.weight_update()          
 
 
 class proximity_behavior(Behavior):

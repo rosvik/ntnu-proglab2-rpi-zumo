@@ -55,7 +55,7 @@ class BBCON:
         for j in range(len(self.behaviors)):
             self.behaviors[j].update()
         self.motobs[0].update(self.arbitrator.choose_action().motor_rec)
-        sleep[0.5]
+        sleep(0.5)
         for sensob in self.sensobs:
             sensob.reset()
 
