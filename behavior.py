@@ -99,14 +99,15 @@ class proximity_behavior(Behavior):
         self.initfunc(bbcon)
         self.sensobs.append(Proximity())
         self.active_flag = True
+        self.bbcon.active_behaviors.append(self)
 
     def sense_and_act(self):
         val = self.sensobs[0].get_value()
         if val[0] == True:
-            self.motor_rec = ['R', 0.25, 1]
+            self.motor_rec = ['R', 0.5, 1.5]
             self.match_degree = 1
         elif val[1] == True:
-            self.motor_rec = ['L', 0.25, 1]
+            self.motor_rec = ['L', 0.5, 1.5]
             self.match_degree = 1
         else:
             self.motor_rec = ['S', 0.25, 1]
