@@ -3,7 +3,7 @@ from Motob import *
 
 class Wheels(Motob):
     def __init__(self):
-        Motob.__init__(self, [Motors()])
+        Motob.__init__(self)
 
 
     def update(self, rec):

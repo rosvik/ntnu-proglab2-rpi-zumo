@@ -1,8 +1,8 @@
 import random
-import Sensob
+from Sensob import *
 from Arbitrator import *
 from behavior import *
-import Wheels
+from Wheels import *
 import basic_robot.imager2 as IMR
 from basic_robot.reflectance_sensors import ReflectanceSensors
 from basic_robot.camera import Camera

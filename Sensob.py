@@ -55,7 +55,7 @@ class CameraSensob(Sensob):
 
     #tar bilde med kamera + analse av fargeverdiene
     def update(self):
-        image = self.camera.update()
+        image = self.sensor.update()
         width, height = image.size
 
         s0_y = floor(height * self.CR[0])
