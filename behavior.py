@@ -66,7 +66,8 @@ class camera_behavior(Behavior):
     #skrive oppførselen vi vil den skal gjøre her.
     
     def __init__(self, bbcon):
-        self.sensobs.append(CameraSensob())
+        self.initfunc(bbcon)
+        self.sensobs.append(CameraSensob('red'))
 
 
     def sense_and_act(self):
@@ -82,6 +83,7 @@ class camera_behavior(Behavior):
 
 class proximity_behavior(Behavior):
     def __init__(self, bbcon):
+        self.initfunc(bbcon)
         self.sensobs.append(Proximity())
         self.active_flag = True
 

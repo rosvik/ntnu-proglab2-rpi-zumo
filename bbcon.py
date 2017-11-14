@@ -28,7 +28,7 @@ class BBCON:
 
         # Adds all the sensobs used by the behaviors to the BBCON
         for behavior in self.behaviors:
-            for sensob in self.behavior.sensobs:
+            for sensob in behavior.sensobs:
                 if sensob not in self.sensobs:
                     self.add_sensob(sensob)
 
