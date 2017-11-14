@@ -70,7 +70,7 @@ class camera_behavior(Behavior):
     def __init__(self, bbcon):
         self.initfunc(bbcon)
         self.sensobs.append(CameraSensob())
-
+        self.bbcon.active_behaviors.append(self)
 
     def sense_and_act(self):
         fraction = self.sensobs[0].get_value()

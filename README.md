@@ -12,3 +12,10 @@ Downloading files:
 ```
 scp robot@rpi-16.idi.ntnu.no:file.txt ~/local/path
 ```
+
+TO DO:
+- Fikse active_behaviors i BBCON/Arbitrator
+- Johannes tar med ny Ultralydsensor
+- Fikse behaviors til å returnere en liste med triplets av motoranbefalinger.
+- Lage motoranbefalinger til kamera-behavior
+- Lage Plan B hvis Ultralyd ikkje funker

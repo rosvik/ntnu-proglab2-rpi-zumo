@@ -6,7 +6,7 @@ from basic_robot.ultrasonic import Ultrasonic
 from time import sleep
 from basic_robot.imager2 import Imager
 from PIL import Image
-
+import RPi.GPIO as GPIO
 
 class Sensob:
 
@@ -126,17 +126,20 @@ class UV(Sensob):
 
 
 def main():
-    p = Proximity()
-    u = UV()
-    c = CameraSensob()
-    while True:    
-        p.update()
-        u.update()
-        c.update()
-        print("Camera: ", c.get_value())
-        print("Proximity: ", p.get_value())
-        print("UV: ", u.get_value())
-        sleep(0.5)
+    try:
+        p = Proximity()
+        u = UV()
+        c = CameraSensob()
+        while True:    
+            p.update()
+            u.update()
+            c.update()
+            print("Camera: ", c.get_value())
+            print("Proximity: ", p.get_value())
+            print("UV: ", u.get_value())
+            sleep(0.5)
+    except KeyboardInterrupt:
+        GPIO.cleanup()
 
 if __name__ == '__main__':
     main()
