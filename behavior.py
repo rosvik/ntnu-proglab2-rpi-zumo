@@ -76,22 +76,36 @@ class camera_behavior(Behavior):
         fraction = self.sensobs[0].get_value()
         index = fraction.index(max(fraction))
         if max(fraction) > 0.8:
-            if index == 0:
-                self.motor_rec = ['L', 0.2, 1.0]
+            if index == 0:      #rød
+                #self.motor_rec = ['L', 0.2, 1.0]
+                self.chaaarge()
                 self.match_degree = 1.0
                 self.weight_update()
-            elif index == 1:
-                self.motor_rec = ['R', 0.2, 1.0]
+            elif index == 1:    #grønn
+                #self.motor_rec = ['R', 0.2, 1.0]
+                self.retreat()
                 self.match_degree = 1.0
                 self.weight_update()
-            else:
-                self.motor_rec = ['L', 0.5, 1.0]
+            else:               #blå
+                #self.motor_rec = ['L', 0.5, 1.0]
+                self.turnaround()
                 self.match_degree = 1.0
                 self.weight_update()
         else:
             self.motor_rec = ['B', 0.2, 0.5]
             self.match_degree = 0.1
             self.weight_update()          
+
+    
+    def chaaarge(self):
+        self.motor_rec = ['F', 1.0, 1.0]
+
+    def retreat(self):
+        self.motor_rec = ['B', 0.2, 1.0]
+
+    def turnaround(self):
+        self.motor_rec = ['R', 0.5, 1.0]
+        self.motor_rec = ['F', 0.2, 1.0]
 
 
 class proximity_behavior(Behavior):
