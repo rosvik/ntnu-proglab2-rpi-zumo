@@ -56,11 +56,11 @@ class UV_behavior(Behavior):
         self.sensobs[0].get_value()
         dist = self.sensobs[0].value
         if dist >= 10:
-            self.motor_rec = ['F', 0.25, 0.3]
+            self.motor_rec = [('F', 0.25, 0.3)]
             self.match_degree = 0.5
             self.weight_update()
         else:
-            self.motor_rec = ['S', 0, 0]
+            self.motor_rec = [('S', 0, 0)]
             self.match_degree = 0.7
             self.weight_update()
 
@@ -92,7 +92,7 @@ class camera_behavior(Behavior):
                 self.match_degree = 1.0
                 self.weight_update()
         else:
-            self.motor_rec = ['B', 0.2, 0.5]
+            self.motor_rec = [('B', 0.2, 0.5)]
             self.match_degree = 0.1
             self.weight_update()          
 
@@ -117,11 +117,11 @@ class proximity_behavior(Behavior):
     def sense_and_act(self):
         val = self.sensobs[0].get_value()
         if val[0] == True:
-            self.motor_rec = ['R', 0.5, 1.5]
+            self.motor_rec = [('R', 0.5, 1.5)]
             self.match_degree = 1
         elif val[1] == True:
-            self.motor_rec = ['L', 0.5, 1.5]
+            self.motor_rec = [('L', 0.5, 1.5)]
             self.match_degree = 1
         else:
-            self.motor_rec = ['S', 0.25, 1]
+            self.motor_rec = [('S', 0.25, 1)]
             self.match_degree = 0
