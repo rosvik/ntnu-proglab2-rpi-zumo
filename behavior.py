@@ -96,16 +96,15 @@ class camera_behavior(Behavior):
             self.match_degree = 0.1
             self.weight_update()          
 
-    
+
     def chaaarge(self):
-        self.motor_rec = ['F', 1.0, 1.0]
+        self.motor_rec = [('F', 1.0, 1.0)]
 
     def retreat(self):
-        self.motor_rec = ['B', 0.2, 1.0]
+        self.motor_rec = [('B', 0.2, 1.0)]
 
     def turnaround(self):
-        self.motor_rec = ['R', 0.5, 1.0]
-        self.motor_rec = ['F', 0.2, 1.0]
+        self.motor_rec = [('R', 0.5, 1.0), ('F', 0.2, 1.0)]
 
 
 class proximity_behavior(Behavior):
