@@ -20,6 +20,7 @@ class BBCON:
         self.motobs = []
         self.current_timestep = 0
         self.arbitrator = Arbitrator(self, False)
+        self.camera_activate = False
 
         # Adds all behaviors to the BBCON
         self.add_behavior(UV_behavior(self))

@@ -24,7 +24,8 @@ class Behavior:
 
     def consider_deactivation(self):
         # When a behavior is active (active_flag = True), the behavior must consider deactivation each timestep
-        pass
+        if True
+            self.active_flag = False
 
     def consider_activation(self):
         # When a behavior is inacvtive (active_flag = False), it must consider activation
@@ -60,6 +61,7 @@ class UV_behavior(Behavior):
             self.match_degree = 0.6
             self.weight_update()
         else:
+            self.bbcon.camera_activate = True
             self.motor_rec = [('S', 0, 0)]
             self.match_degree = 0.3
             self.weight_update()
@@ -72,29 +74,48 @@ class camera_behavior(Behavior):
         self.sensobs.append(CameraSensob())
         self.bbcon.active_behaviors.append(self)
 
-    def sense_and_act(self):
-        fraction = self.sensobs[0].get_value()
-        index = fraction.index(max(fraction))
-        if max(fraction) > 0.8:
-            if index == 0:      #rød
-                #self.motor_rec = ['L', 0.2, 1.0]
-                self.chaaarge()
-                self.match_degree = 0.5
-                self.weight_update()
-            elif index == 1:    #grønn
-                #self.motor_rec = ['R', 0.2, 1.0]
-                self.retreat()
-                self.match_degree = 0.5
-                self.weight_update()
-            else:               #blå
-                #self.motor_rec = ['L', 0.5, 1.0]
-                self.turnaround()
-                self.match_degree = 0.5
-                self.weight_update()
+    def consider_deactivation(self):
+        if self.bbcon.camera_activate:
+            self.active_flag = True
         else:
-            self.motor_rec = [('B', 0.2, 0.5)]
-            self.match_degree = 0.1
-            self.weight_update()          
+            self.active_flag = False
+            self.bbcon.active_behaviors.pop(self)
+
+    def consider_activation(self):
+        if self.bbcon.camera_activate:
+            self.active_flag = True
+            self.bbcon.active_behaviors.append(self)
+        else:
+            self.active_flag = False
+
+    def sense_and_act(self):
+        if self.active_flag:
+            self.consider_deactivation()
+        else:
+            self.consider_activation()
+        if self.active_flag:
+            fraction = self.sensobs[0].get_value()
+            index = fraction.index(max(fraction))
+            if max(fraction) > 0.8:
+                if index == 0:      #rød
+                    #self.motor_rec = ['L', 0.2, 1.0]
+                    self.chaaarge()
+                    self.match_degree = 0.5
+                    self.weight_update()
+                elif index == 1:    #grønn
+                    #self.motor_rec = ['R', 0.2, 1.0]
+                    self.retreat()
+                    self.match_degree = 0.5
+                    self.weight_update()
+                else:               #blå
+                    #self.motor_rec = ['L', 0.5, 1.0]
+                    self.turnaround()
+                    self.match_degree = 0.5
+                    self.weight_update()
+            else:
+                self.motor_rec = [('B', 0.2, 0.5)]
+                self.match_degree = 0.1
+                self.weight_update()
 
 
     def chaaarge(self):
