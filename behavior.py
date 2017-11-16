@@ -56,6 +56,7 @@ class UV_behavior(Behavior):
         self.sensobs[0].get_value()
         dist = self.sensobs[0].value
         if dist >= 10:
+            self.bbcon.camera_activate = False
             self.motor_rec = [('F', 0.25, 0.6)]
             self.match_degree = 0.6
             self.weight_update()
