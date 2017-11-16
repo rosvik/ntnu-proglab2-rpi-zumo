@@ -56,7 +56,7 @@ class BBCON:
         for j in range(len(self.behaviors)):
             self.behaviors[j].update()
         self.motobs[0].update(self.arbitrator.choose_action().motor_rec)
-        sleep(0.5)
+        sleep(0.4)
         for sensob in self.sensobs:
             sensob.reset()
 
@@ -66,6 +66,7 @@ def main():
     ZumoButton().wait_for_press()
     while x == False:
         bbcon.run_one_timestep()
+        print(bbcon.active_behaviors)
 
 if __name__ == '__main__':
     main()
