@@ -24,7 +24,8 @@ class Behavior:
 
     def consider_deactivation(self):
         # When a behavior is active (active_flag = True), the behavior must consider deactivation each timestep
-
+        pass
+    
     def consider_activation(self):
         # When a behavior is inacvtive (active_flag = False), it must consider activation
         pass
