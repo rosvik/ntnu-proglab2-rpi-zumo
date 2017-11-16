@@ -57,11 +57,11 @@ class UV_behavior(Behavior):
         dist = self.sensobs[0].value
         if dist >= 10:
             self.motor_rec = [('F', 0.25, 0.3)]
-            self.match_degree = 0.4
+            self.match_degree = 0.6
             self.weight_update()
         else:
             self.motor_rec = [('S', 0, 0)]
-            self.match_degree = 0.7
+            self.match_degree = 0.3
             self.weight_update()
 
 class camera_behavior(Behavior):
