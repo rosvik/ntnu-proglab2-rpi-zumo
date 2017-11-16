@@ -3,6 +3,7 @@ import basic_robot.ultrasonic
 from math import floor
 from basic_robot.camera import Camera
 from basic_robot.ultrasonic import Ultrasonic
+from basic_robot.zumo_button import ZumoButton
 from time import sleep
 from basic_robot.imager2 import Imager
 from PIL import Image
@@ -116,7 +117,7 @@ class UV(Sensob):
 
     def update(self):
         self.sensors[0].update()
-        self.value = self.sensors[0].value
+        self.value = self.sensors[0].get_value()
 
     def get_value(self):
         return self.value
@@ -130,6 +131,7 @@ def main():
         p = Proximity()
         u = UV()
         c = CameraSensob()
+        zb = ZumoButton()
         while True:    
             p.update()
             u.update()

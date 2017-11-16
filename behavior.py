@@ -57,7 +57,7 @@ class UV_behavior(Behavior):
         dist = self.sensobs[0].value
         if dist >= 10:
             self.motor_rec = [('F', 0.25, 0.3)]
-            self.match_degree = 0.5
+            self.match_degree = 0.4
             self.weight_update()
         else:
             self.motor_rec = [('S', 0, 0)]
@@ -79,17 +79,17 @@ class camera_behavior(Behavior):
             if index == 0:      #rød
                 #self.motor_rec = ['L', 0.2, 1.0]
                 self.chaaarge()
-                self.match_degree = 1.0
+                self.match_degree = 0.5
                 self.weight_update()
             elif index == 1:    #grønn
                 #self.motor_rec = ['R', 0.2, 1.0]
                 self.retreat()
-                self.match_degree = 1.0
+                self.match_degree = 0.5
                 self.weight_update()
             else:               #blå
                 #self.motor_rec = ['L', 0.5, 1.0]
                 self.turnaround()
-                self.match_degree = 1.0
+                self.match_degree = 0.5
                 self.weight_update()
         else:
             self.motor_rec = [('B', 0.2, 0.5)]
@@ -98,7 +98,7 @@ class camera_behavior(Behavior):
 
 
     def chaaarge(self):
-        self.motor_rec = [('F', 1.0, 1.0)]
+        self.motor_rec = [('F', 0.7, 1.0)]
 
     def retreat(self):
         self.motor_rec = [('B', 0.2, 1.0)]
