@@ -71,6 +71,7 @@ class camera_behavior(Behavior):
     
     def __init__(self, bbcon):
         self.initfunc(bbcon)
+        self.active_flag = True
         self.sensobs.append(CameraSensob())
         self.bbcon.active_behaviors.append(self)
 
@@ -79,12 +80,13 @@ class camera_behavior(Behavior):
             self.active_flag = True
         else:
             self.active_flag = False
-            self.bbcon.active_behaviors.pop(self)
+            self.bbcon.active_behaviors.pop(self.bbcon.active_behaviors.index(self))
 
     def consider_activation(self):
         if self.bbcon.camera_activate:
             self.active_flag = True
-            self.bbcon.active_behaviors.append(self)
+            if self not in self.bbcon.active_behaviors:
+                self.bbcon.active_behaviors.append(self)
         else:
             self.active_flag = False
 
